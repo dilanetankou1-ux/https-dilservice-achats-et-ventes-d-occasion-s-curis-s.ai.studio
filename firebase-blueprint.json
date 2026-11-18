@@ -1,0 +1,742 @@
+{
+  "entities": {
+    "PublicProfile": {
+      "title": "PublicProfile",
+      "description": "Publicly visible profile details for marketplace participants without PII.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "city": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 80
+        },
+        "photoURL": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "displayName", "city", "photoURL", "createdAt", "updatedAt"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Private user account profile containing PII, exact location, WhatsApp contact, and currency preferences, strictly owner-readable and owner-writable.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "country": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 80
+        },
+        "city": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 80
+        },
+        "neighborhood": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120
+        },
+        "continent": {
+          "type": "string",
+          "enum": ["afrique", "europe", "ameriques", "asie_oceanie"]
+        },
+        "preferredCurrency": {
+          "type": "string",
+          "enum": ["EUR", "XAF", "XOF", "MAD", "NGN", "KES", "ZAR", "GBP", "CHF", "USD", "CAD"]
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "whatsappNumber": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "photoURL": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "uid",
+        "email",
+        "displayName",
+        "country",
+        "city",
+        "neighborhood",
+        "continent",
+        "preferredCurrency",
+        "phone",
+        "whatsappNumber",
+        "photoURL",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PaymentMethod": {
+      "title": "PaymentMethod",
+      "description": "Owner-only tokenized/masked payment instrument (Bank Card, MTN MoMo, or Orange Money). Never stores raw PAN or CVV.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "provider": {
+          "type": "string",
+          "enum": ["carte_bancaire", "mtn_momo", "orange_money"]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "holderName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "maskedIdentifier": {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 40
+        },
+        "cardBrand": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "expiry": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 10
+        },
+        "countryDialCode": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 10
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "provider",
+        "label",
+        "holderName",
+        "maskedIdentifier",
+        "cardBrand",
+        "expiry",
+        "countryDialCode",
+        "isDefault",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Favorite": {
+      "title": "Favorite",
+      "description": "A user's saved second-hand listing bookmark.",
+      "type": "object",
+      "properties": {
+        "listingId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["listingId", "userId", "createdAt"]
+    },
+    "Listing": {
+      "title": "Listing",
+      "description": "A peer-to-peer second-hand product listing with detailed item description, specs, and pickup location.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "sellerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "sellerName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "sellerCity": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000
+        },
+        "itemSpecs": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 300
+        },
+        "price": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["EUR", "XAF", "XOF", "MAD", "NGN", "KES", "ZAR", "GBP", "CHF", "USD", "CAD"]
+        },
+        "region": {
+          "type": "string",
+          "enum": ["afrique", "europe", "ameriques", "asie_oceanie"]
+        },
+        "country": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "category": {
+          "type": "string",
+          "enum": ["mobilier", "electronique", "mode", "velo", "audio", "livres", "maison", "autre"]
+        },
+        "condition": {
+          "type": "string",
+          "enum": ["neuf_etiquette", "tres_bon_etat", "bon_etat", "etat_satisfaisant"]
+        },
+        "deliveryMode": {
+          "type": "string",
+          "enum": ["remise_en_main_propre", "livraison_securisee", "les_deux"]
+        },
+        "city": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "neighborhood": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120
+        },
+        "imageUrl": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 350000
+        },
+        "status": {
+          "type": "string",
+          "enum": ["available", "reserved", "sold"]
+        },
+        "buyerId": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "sellerId",
+        "sellerName",
+        "sellerCity",
+        "title",
+        "description",
+        "itemSpecs",
+        "price",
+        "currency",
+        "region",
+        "country",
+        "category",
+        "condition",
+        "deliveryMode",
+        "city",
+        "neighborhood",
+        "imageUrl",
+        "status",
+        "buyerId",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "A secure 1-to-1 messaging thread restricted to buyerId and sellerId, exchanging private WhatsApp and location details.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "listingId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "listingTitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "listingPrice": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["EUR", "XAF", "XOF", "MAD", "NGN", "KES", "ZAR", "GBP", "CHF", "USD", "CAD"]
+        },
+        "listingImageUrl": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 350000
+        },
+        "buyerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "buyerName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "buyerWhatsapp": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "buyerLocation": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 160
+        },
+        "sellerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "sellerName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "sellerWhatsapp": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "sellerLocation": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 160
+        },
+        "lastMessage": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "lastSenderId": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "offerPrice": {
+          "type": "number"
+        },
+        "offerStatus": {
+          "type": "string",
+          "enum": ["none", "pending", "accepted", "declined"]
+        },
+        "unreadByBuyer": {
+          "type": "number"
+        },
+        "unreadBySeller": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "closed"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "listingId",
+        "listingTitle",
+        "listingPrice",
+        "currency",
+        "listingImageUrl",
+        "buyerId",
+        "buyerName",
+        "buyerWhatsapp",
+        "buyerLocation",
+        "sellerId",
+        "sellerName",
+        "sellerWhatsapp",
+        "sellerLocation",
+        "lastMessage",
+        "lastSenderId",
+        "offerPrice",
+        "offerStatus",
+        "unreadByBuyer",
+        "unreadBySeller",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "An immutable message or price offer inside a secure buyer-seller conversation.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "conversationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "buyerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "sellerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "senderId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "senderName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1500
+        },
+        "type": {
+          "type": "string",
+          "enum": ["text", "offer", "offer_accepted", "offer_declined", "system"]
+        },
+        "offerAmount": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "conversationId",
+        "buyerId",
+        "sellerId",
+        "senderId",
+        "senderName",
+        "text",
+        "type",
+        "offerAmount",
+        "createdAt"
+      ]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A confirmed peer-to-peer purchase transaction receipt with buyer/seller location and WhatsApp handoff coordinates.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "listingId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "listingTitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "listingImageUrl": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 350000
+        },
+        "buyerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "buyerName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "buyerWhatsapp": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "buyerLocation": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 160
+        },
+        "sellerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "sellerName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "sellerWhatsapp": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "sellerLocation": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 160
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["EUR", "XAF", "XOF", "MAD", "NGN", "KES", "ZAR", "GBP", "CHF", "USD", "CAD"]
+        },
+        "agreedPrice": {
+          "type": "number"
+        },
+        "protectionFee": {
+          "type": "number"
+        },
+        "totalAmount": {
+          "type": "number"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "enum": ["carte_bancaire", "mtn_momo", "orange_money"]
+        },
+        "paymentSummary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "deliveryMethod": {
+          "type": "string",
+          "enum": ["remise_en_main_propre", "livraison_securisee"]
+        },
+        "handoffDetails": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 240
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending_handoff", "shipped", "completed", "cancelled"]
+        },
+        "conversationId": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "listingId",
+        "listingTitle",
+        "listingImageUrl",
+        "buyerId",
+        "buyerName",
+        "buyerWhatsapp",
+        "buyerLocation",
+        "sellerId",
+        "sellerName",
+        "sellerWhatsapp",
+        "sellerLocation",
+        "currency",
+        "agreedPrice",
+        "protectionFee",
+        "totalAmount",
+        "paymentMethod",
+        "paymentSummary",
+        "deliveryMethod",
+        "handoffDetails",
+        "status",
+        "conversationId",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/publicProfiles/{userId}": {
+      "schema": { "$ref": "#/entities/PublicProfile" },
+      "description": "Public seller and buyer display profiles without PII."
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Owner-only private profile documents containing email, WhatsApp number, exact location, and preferences."
+    },
+    "/users/{userId}/paymentMethods/{methodId}": {
+      "schema": { "$ref": "#/entities/PaymentMethod" },
+      "description": "Owner-only masked payment instruments (Bank Card, MTN MoMo, Orange Money)."
+    },
+    "/users/{userId}/favorites/{listingId}": {
+      "schema": { "$ref": "#/entities/Favorite" },
+      "description": "Owner-only bookmarked second-hand listings."
+    },
+    "/listings/{listingId}": {
+      "schema": { "$ref": "#/entities/Listing" },
+      "description": "Publicly browsable second-hand listings with detailed description, specs, and pickup area."
+    },
+    "/conversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/Conversation" },
+      "description": "Private 1-to-1 negotiation and messaging threads restricted to buyerId and sellerId."
+    },
+    "/conversations/{conversationId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/Message" },
+      "description": "Immutable chat messages and offers belonging to a specific buyer-seller conversation."
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Peer-to-peer transaction receipts restricted to the buyer and seller."
+    }
+  }
+}

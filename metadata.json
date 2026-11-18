@@ -1,0 +1,6 @@
+{
+  "name": "Dilservice — Achats et Ventes d'Occasion Sécurisés",
+  "description": "Dilservice : plateforme d'achat et de vente d'objets d'occasion entre particuliers avec négociation et messagerie sécurisée intégrée.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
