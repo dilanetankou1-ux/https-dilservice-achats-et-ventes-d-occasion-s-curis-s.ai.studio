@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123c72">
+<title>ASSURANCES SERVICE | Garoua-Boulaï</title>
+<style>
+:root{--blue:#123c72;--blue2:#1769aa;--gold:#f5b82e;--bg:#f4f7fb;--ink:#172033;--muted:#637083;--white:#fff;--line:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}header{background:linear-gradient(135deg,var(--blue),var(--blue2));color:white;padding:24px 16px 30px;border-radius:0 0 24px 24px}nav{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:900;letter-spacing:.4px}.pill{background:#ffffff20;border:1px solid #ffffff55;padding:8px 11px;border-radius:999px;font-size:12px}.hero{max-width:1000px;margin:28px auto 0}.hero h1{font-size:clamp(27px,5vw,44px);line-height:1.1;margin:0 0 12px}.hero p{max-width:620px;color:#e6efff;line-height:1.6}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:12px;padding:12px 16px;font-weight:750;text-decoration:none;cursor:pointer;font-size:14px}.primary{background:var(--gold);color:#19263c}.light{background:white;color:var(--blue)}.outline{border:1px solid var(--line);background:white;color:var(--blue)}main{max-width:1000px;margin:22px auto;padding:0 14px 40px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 5px 20px #17203308}.card h2,.card h3{margin:0 0 9px}.muted{color:var(--muted);line-height:1.55;font-size:14px}.icon{font-size:25px;margin-bottom:10px}.section-title{margin:28px 0 12px;font-size:23px}.field{display:block;width:100%;padding:12px 13px;border:1px solid #ccd5e1;border-radius:11px;margin:8px 0 12px;font:inherit;background:white}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:520px){.row{grid-template-columns:1fr}}.notice{background:#fff7df;border:1px solid #f2d27b;color:#654b0c;padding:12px;border-radius:12px;font-size:13px;line-height:1.5}.status{margin-top:10px;font-size:13px;line-height:1.5}.hidden{display:none!important}footer{padding:22px 16px;text-align:center;color:var(--muted);font-size:12px}a{color:var(--blue2)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tab{border:1px solid var(--line);background:#fff;padding:10px 12px;border-radius:10px;font-weight:700;color:var(--blue);cursor:pointer}.tab.active{background:var(--blue);color:#fff}.dash-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.balance{font-size:28px;font-weight:900;color:var(--blue)}.small{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+<nav><div class="brand">🛡️ ASSURANCES SERVICE</div><span class="pill">GAROUA-BOULAÏ · CAMEROUN</span></nav>
+<div class="hero">
+<h1>Vos services, simplement.</h1>
+<p>Assistance numérique, accompagnement aux services en ligne et formation à l'utilisation des moyens de paiement numériques.</p>
+<div class="actions"><a class="btn primary" href="#contact">Contacter l'agence</a><a class="btn light" href="#compte">Espace client démo</a></div>
+</div></header>
+<main>
+<div class="grid">
+<section class="card"><div class="icon">📱</div><h3>Assistance numérique</h3><p class="muted">Aide à l'utilisation des services en ligne et accompagnement pratique.</p></section>
+<section class="card"><div class="icon">💳</div><h3>Cartes virtuelles</h3><p class="muted">Formation pour comprendre les cartes virtuelles et choisir un fournisseur autorisé.</p></section>
+<section class="card"><div class="icon">🎓</div><h3>Formation</h3><p class="muted">Conseils de base pour les paiements en ligne et la sécurité numérique.</p></section>
+</div>
+<h2 class="section-title" id="compte">Espace client — démonstration</h2>
+<div class="card">
+<div class="notice">Cette version est une maquette locale : elle ne crée pas de vrais comptes en ligne, ne conserve pas les données sur un serveur et ne traite aucun paiement. Ne saisissez pas de vrai mot de passe. Les soldes et transactions réels ne seront affichés qu'après connexion à un service autorisé.</div>
+<div class="tabs" style="margin-top:16px"><button class="tab active" data-view="register">Créer un profil démo</button><button class="tab" data-view="login">Connexion démo</button><button class="tab" data-view="dashboard">Mon espace démo</button></div>
+<div id="register">
+<h3>Créer un profil de démonstration</h3>
+<form id="regForm"><label>Nom complet<input class="field" id="regName" required placeholder="Ex. Jean Dupont"></label><div class="row"><label>Téléphone<input class="field" id="regPhone" required inputmode="tel" placeholder="6XX XXX XXX"></label><label>E-mail (facultatif)<input class="field" id="regEmail" type="email" placeholder="nom@exemple.com"></label></div><button class="btn primary" type="submit">Créer le profil démo</button><div id="regStatus" class="status" aria-live="polite"></div></form>
+</div>
+<div id="login" class="hidden"><h3>Connexion de démonstration</h3><p class="muted">Entrez le nom utilisé pour créer le profil démo sur cet appareil. Aucun mot de passe n'est demandé dans cette maquette.</p><form id="loginForm"><label>Nom complet<input class="field" id="loginName" required placeholder="Votre nom"></label><button class="btn primary" type="submit">Ouvrir mon espace démo</button><div id="loginStatus" class="status" aria-live="polite"></div></form></div>
+<div id="dashboard" class="hidden"><div class="dash-top"><div><h3 id="welcome">Espace client démo</h3><p class="muted">Profil enregistré uniquement dans ce navigateur.</p></div><button class="btn outline" id="logoutBtn">Fermer l'espace</button></div><div class="grid" style="margin-top:12px"><div class="card"><div class="small">Solde réel</div><div class="balance">Non connecté</div><p class="muted">Aucun compte financier relié.</p></div><div class="card"><h3>Historique</h3><p class="muted">Aucune transaction réelle. Les opérations ne seront affichées qu'après intégration d'un fournisseur autorisé.</p></div></div><div class="status" id="dashStatus"></div></div>
+</div>
+<h2 class="section-title">Apprendre en sécurité</h2><div class="card"><h3>Cartes Visa virtuelles</h3><p class="muted">Utilisez uniquement un fournisseur qui accepte légalement les résidents du Cameroun. Vérifiez les frais, l'identité de l'entreprise et les conditions avant de payer. Ne communiquez jamais votre code SMS, votre PIN ou votre mot de passe à un démarcheur.</p></div>
+<h2 class="section-title" id="contact">Contacter l'agence</h2>
+<div class="grid"><div class="card"><h3>ASSURANCES SERVICE</h3><p class="muted">Garoua-Boulaï, Cameroun</p><p><strong>Téléphone 1 :</strong> <a href="tel:678321595">678 321 595</a></p><p><strong>Téléphone 2 :</strong> <a href="tel:657454012">657 454 012</a></p><div class="actions"><a class="btn primary" href="https://wa.me/237678321595" target="_blank" rel="noopener">WhatsApp</a><a class="btn outline" href="https://wa.me/237657454012" target="_blank" rel="noopener">WhatsApp 2</a></div></div><div class="card"><h3>Besoin d'aide ?</h3><p class="muted">Contactez l'agence pour connaître les services disponibles, les tarifs et les conditions avant toute commande.</p><a class="btn primary" href="tel:678321595">Appeler l'agence</a></div></div>
+</main>
+<footer>© ASSURANCES SERVICE · Garoua-Boulaï, Cameroun<br>Version de démonstration — aucun paiement ni compte financier réel n'est traité.</footer>
+<script>
+const views=['register','login','dashboard'];
+function showView(v){views.forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==v));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.view===v));if(v==='dashboard')renderDash();}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+function getProfile(){try{return JSON.parse(localStorage.getItem('assurancesServiceDemoProfile')||'null')}catch(e){return null}}
+function setStatus(id,msg){document.getElementById(id).textContent=msg}
+document.getElementById('regForm').addEventListener('submit',e=>{e.preventDefault();const profile={name:document.getElementById('regName').value.trim(),phone:document.getElementById('regPhone').value.trim(),email:document.getElementById('regEmail').value.trim()};localStorage.setItem('assurancesServiceDemoProfile',JSON.stringify(profile));setStatus('regStatus','Profil de démonstration créé sur cet appareil. Ce profil n’est pas un vrai compte en ligne.');});
+document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();const p=getProfile();if(p&&p.name.toLowerCase()===document.getElementById('loginName').value.trim().toLowerCase()){showView('dashboard');setStatus('dashStatus','Connexion de démonstration réussie.');}else setStatus('loginStatus','Profil introuvable sur cet appareil. Créez d’abord un profil démo.');});
+function renderDash(){const p=getProfile();document.getElementById('welcome').textContent=p?'Bonjour, '+p.name:'Espace client démo';}
+document.getElementById('logoutBtn').addEventListener('click',()=>showView('login'));
+</script>
+</body></html>
